@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Little record of my life, talks other than programming.">
+    <meta name="keywords"  content="Wendyltanpcy, Wendy's Blog, Wendy的博客, 生活, 记录, 编程, 分享">
+    <meta name="theme-color" content="#000000">
+    
+    <title>Wendy的博客 | Wendy's Blog</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Safari Webpage Icon    by-BY -->
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Wendy's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-desk.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Wendy's Blog</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">心有猛虎，细嗅蔷薇</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- PostList Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                postlist-container
+            ">
+    			
+<div class="post-preview">
+    <a href="/2019/06/21/%E6%97%A0%E5%B0%BD%E7%9A%84%E8%80%83%E8%AF%95/">
+        <h2 class="post-title">
+            梦系列-其一
+        </h2>
+        
+        <h3 class="post-subtitle">
+            无尽的考试
+        </h3>
+        
+        <div class="post-content-preview">
+            回过神来，不知道为何教室已经剩下吴子轩一个人。
+
+夕阳的余晖从教室的角落钻进来，盖住大半个教室学生们的课桌。
+
+“我这是在哪。。？”
+
+子轩茫然地看着这空无一人的教室，偶有掉落地上的试卷，风吹刮书本翻页的声音。窗外挤进来的热风将他包围，桌面的小风扇奋力旋转着，将他从中扯出来。
+
+他的确记得，刚才的他应该在别的地方，但是具体是哪儿，却是毫无印象了。教室很宽阔。放下了五十多张桌子，而桌子上毫无例...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Wendy on June 21, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/06/21/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9C%9D%E5%9C%A3/">
+        <h2 class="post-title">
+            一个人的朝圣
+        </h2>
+        
+        <h3 class="post-subtitle">
+            怀念一起爬山的日子
+        </h3>
+        
+        <div class="post-content-preview">
+            学校附近有座山，名字叫板障山。山本身并没有什么特别，不算太高，甚至可以说是有点矮，即便如此也能够在山顶一览珠海这座城市的一隅。爬山的人不多，也不是什么特别的旅游景点。但至少也用脚长长短短多多少少在上面踩出过两年的足迹，不知不觉就成为了大学生活难忘的一节了。
+
+犹豫了很久要不要一个人去爬。以往总是有友人相伴。在盘旋的山路上，我们攀谈种种，生活情感学习等等，挥汗淋漓，欣赏山巅之景之间，竟是只差弹...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Wendy on June 21, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/06/17/%E5%89%A7%E8%AF%84-%E9%BB%91%E9%95%9C%E7%B3%BB%E5%88%97-%E5%85%B6%E4%B8%80/">
+        <h2 class="post-title">
+            剧评-黑镜系列-其一
+        </h2>
+        
+        <h3 class="post-subtitle">
+            科技和人性
+        </h3>
+        
+        <div class="post-content-preview">
+            老实说，很久没有看过这么有深度，引人思考的剧了，便想尝试做一期剧评。
+
+最近一段时间都在看日剧，在朋友的推荐下来看这部神剧-黑镜（Black Mirror）。前三季分别在豆瓣获得9.4、9.2、8.8的高分。
+
+首先介绍一下黑镜：
+
+
+
+注意到”由Netflex出品”。没错，就和爱死机(love,death and robot)一样，只能说网飞出品，绝对必属精品。然后剧集是每一集都是独立的小...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Wendy on June 17, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/06/12/%E7%A6%BB%E5%88%AB/">
+        <h2 class="post-title">
+            离别
+        </h2>
+        
+        <h3 class="post-subtitle">
+            梦见朋友了
+        </h3>
+        
+        <div class="post-content-preview">
+            毕业离校的时候和朋友相别，离别的悲伤笼罩在头上，好几天散不去。真的分别了，长长驻足，目视背影，高举过头的挥手；亦或是满怀祝福，用力拥抱，痛快离开。往事开始跑马灯，到了难分难舍，不得不分，有缘再聚的时候。
+
+离别是一直存在却又无可奈何的事情。各种大大小小的离别在生活中时常发生：小到搬家，转学，大到生离死别。无一例外的，离别都会使人悲伤，陷入一段时间的痛苦。过去发生的事情像一把刻刀，把那些人和事...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Wendy on June 12, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/06/01/%E5%85%AD%E6%9C%88%E4%B8%80%E6%97%A5%E8%AE%B0/">
+        <h2 class="post-title">
+            六月一日记
+        </h2>
+        
+        <h3 class="post-subtitle">
+            男性生理期来了。
+        </h3>
+        
+        <div class="post-content-preview">
+            时间来到六月份，海滨城市连下几天雨之后，迎来难得的晴天。空气的闷热又从胸腔中逼仄上来，穿着稍微长点的衣服走动一会都不免汗流浃背。工作的时候盼周末，到了周末却真正没有什么事情可干，每周便是如此循环。
+
+掰着指头一数，回来上班已经半个月了。
+
+半个月说短不短，说长不长，却是发生了好些事。认识了一些新的人，协助了一场大活动，开过一些会，习惯了饭堂的饭菜，每天三四十分钟的来回通勤和车上阅读的时光。毫...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Wendy on June 1, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/05/18/%E6%B2%A1%E6%9C%89%E6%84%9F%E6%83%85%E7%9A%84%E7%89%99%E9%BD%BF%E6%9D%80%E6%89%8B/">
+        <h2 class="post-title">
+            没有感情的牙齿杀手
+        </h2>
+        
+        <h3 class="post-subtitle">
+            真想吃糖。。
+        </h3>
+        
+        <div class="post-content-preview">
+             		从小我的牙质就不是特别好，但我爱吃一切的甜食。试问哪个小孩子不喜欢甜食呢。
+
+​		初中放学的时候，蹦跳下公交车就是每天一根雪糕的日常。在炎炎夏日焚烤得柏油马路都被气浪扭曲变形的时候，挑选一根小卖部里五颜六色品种繁多的雪糕，让人心口伴随着齿缝融化的雪糕都微微松软下来，感受清凉的片刻舒适。
+
+​		小学的时候，兜里没有个几块钱。五毛钱、一块钱也算是巨款。什么好玩又好吃的橡皮糖，一毛一颗的...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Wendy on May 18, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/04/26/%E6%AD%A4%E5%8E%BB%E6%A8%B1%E8%8A%B1%E5%9B%BD/">
+        <h2 class="post-title">
+            此去樱花国
+        </h2>
+        
+        <h3 class="post-subtitle">
+            日本社会的冰山一角
+        </h3>
+        
+        <div class="post-content-preview">
+            高空
+
+​		随着机内叮咚温柔的提示，突然加速的压力，呼呼急转的发动机引擎，被按压在座椅上，铁鸟展开双翼，冲破云霄，扶摇直上。离开的时候，正是清晨破晓之际。流动的云雾在身下，皑皑铺成毛绒地毯。更高一点的云垒成几座山，犹如悬空的钟乳石，插放其中。一块蓝色巨幕竖立其后，初升的朝阳溅射出的剑刃将其撕裂分割。手机抖动间，拍出的几张照片都好似在太空，这高空的景色，纯得发蓝。铁鸟抖动翅膀，在气流中翻飞，...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Wendy on April 26, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/04/25/%E5%82%BB%E7%93%9C%E5%BC%8F%E8%AF%A6%E7%BB%86%E8%A7%A3%E8%AF%B4%E5%8D%81%E5%A4%A9%E8%87%AA%E5%8A%A9%E6%97%A5%E6%9C%AC%E8%A1%8C/">
+        <h2 class="post-title">
+            傻瓜式详细解说十天自助日本行
+        </h2>
+        
+        <h3 class="post-subtitle">
+            冰山一角的日本攻略
+        </h3>
+        
+        <div class="post-content-preview">
+            
+  阅前需知
+
+
+建议轻装上阵！
+
+本攻略可能偏男性向，药妆购物部分由于走马观花和不懂日语几乎为零。药妆店繁多，到处都是，要找的话给店员看图片即可。并且没有专注于找特色美食，反而对便利店情况更为熟悉。需要药妆购物向的女性朋友们可以考虑东京行，涉谷新宿银座这三个地方购物绝对够了。
+
+需要看景点为主的朋友们可以考虑关西行，主要看看大阪京都，这边景点丰富，人也不多，可以好好停下来看景或者拍照，东...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Wendy on April 25, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/04/05/%E6%A1%82%E8%8A%B1%E5%9B%9B%E6%9C%88%E5%BC%80/">
+        <h2 class="post-title">
+            桂花四月开
+        </h2>
+        
+        <h3 class="post-subtitle">
+            一次随心的闲逛
+        </h3>
+        
+        <div class="post-content-preview">
+            ​     天气正好，没有令人焦躁流汗的烈日，也没有扑面如雾的细雨。放眼过去是一个明亮的世界，双目贪婪的吞噬着隔离带上的绿意，心中充满了喜悦，原来早已厌倦白炽灯光和背光屏幕。论文日常的确挺磨人的，差点就忘记内心深处的炽热。一个人出来散心自从上年底之后还是第一次。
+
+​     来到北山大院后漫无目的地游走。旧物仓——原本是为了这个来的，显然太早还没有开门，已经有许多青年女孩儿在此凹造型，手扶...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Wendy on April 5, 2019
+    </p>
+</div>
+<hr>
+
+<div class="post-preview">
+    <a href="/2019/03/30/%E6%A2%97%E5%8F%AF%E8%83%BD%E4%BC%9A%E8%BF%87%E6%97%B6-%E4%BD%86meme%E4%B8%8D%E4%BC%9A/">
+        <h2 class="post-title">
+            梗可能会过时，但meme不会
+        </h2>
+        
+        <h3 class="post-subtitle">
+            什么是meme？
+        </h3>
+        
+        <div class="post-content-preview">
+            ​	也许你对meme这个词一脸陌生摸不着头脑，而对你更为熟悉的词语显然是“梗图”。什么是梗？百度百科告诉了我们意思：
+
+
+
+​	听到一些如“神马都是浮云”，“哥只是个传说”，“你是gg还是mm”，“你也在网上冲浪吗”，“蓝瘦香菇”等等，你是否会觉得有一丝尴尬，而且惊讶与梗生命力的短暂？有些梗不过是过了一两年，其使用频率就大大下降，被遗忘在文化历史的长河当中，只有一些书籍还有所记载；根据现实发...
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by Wendy on March 30, 2019
+    </p>
+</div>
+<hr>
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+    
+    <li class="next">
+        <a href="/page2">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
+
+
+    		</div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                                <a href="/tags/#主题" title="主题" rel="4">
+                                    主题
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#回忆" title="回忆" rel="1">
+                                    回忆
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#感悟" title="感悟" rel="9">
+                                    感悟
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#科普" title="科普" rel="1">
+                                    科普
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#攻略" title="攻略" rel="1">
+                                    攻略
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#剧评" title="剧评" rel="1">
+                                    剧评
+                                </a>
+                            
+                        
+                            
+                                <a href="/tags/#梦系列" title="梦系列" rel="1">
+                                    梦系列
+                                </a>
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+                        
+                            <a href="/about">
+                                <img src="/img/asuka.jpg"/>
+                            </a>
+                        
+                        
+                            <p>足够细腻去触碰生活，内心才能更加坚强</p>
+                        
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            <li>
+                                <a href="/feed.xml">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                           
+                            
+                            
+                            <li>
+                                <a target="_blank" href="http://weibo.com/折木柚璃桑">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                         
+                            
+                            <li>
+                                <a target="_blank" href="https://github.com/wendyltan">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                        </ul>
+                        
+                            <p>✉️ youlinai233@gmail.com</p>
+                        
+                    </div>
+                </section>
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="https://bilibili.com">bilibili</a></li>
+                    
+                        <li><a href="https://github.com">Github</a></li>
+                    
+                </ul>
+                
+    		</div>
+        
+	</div>
+</div>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <!-- add jianshu add target = "_blank" to <a> by BY -->
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/折木柚璃桑">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/wendyltan">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Wendy's Blog 2019
+                    <br>
+                    Theme on <a href="https://github.com/wendyltan/wendyltan.github.io.git">GitHub</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=wendyltan&repo=wendyltan.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script type="text/javascript">
+    if(navigator.serviceWorker){
+        // For security reasons, a service worker can only control the pages that are in the same directory level or below it. That's why we put sw.js at ROOT level.
+        navigator.serviceWorker
+            .register('/sw.js')
+            .then((registration) => {console.log('Service Worker Registered. ', registration)})
+            .catch((error) => {console.log('ServiceWorker registration failed: ', error)})
+    }
+</script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/ 
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers   
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/apple-touch-icon.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
