@@ -53,7 +53,7 @@ kramdown:
 gitalk:
   enable: true    #是否开启Gitalk评论
   clientID: 629c3481153700357053                           #生成的clientID
-  clientSecret: 3de01b746f16f23075fba964d9fb3ce474d2a75e    #生成的clientSecret
+  clientSecret: 77dd72b6fd3ebae1881ce0e502e84388aa1da251    #生成的clientSecret
   repo: BlogComment   #仓库名称
   owner: wendyltan    #github用户名
   admin: wendyltan
