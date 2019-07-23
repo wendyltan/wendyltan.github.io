@@ -173,13 +173,13 @@
         
 
 <!-- USE SIDEBAR -->
-    <!-- PostList Container -->
+    <!-- Post Container -->
     		<div class="
                 col-lg-8 col-lg-offset-1
                 col-md-8 col-md-offset-1
                 col-sm-12
                 col-xs-12
-                postlist-container
+                post-container
             ">
     			<!-- Language Selector -->
 <!-- <select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
@@ -284,15 +284,13 @@
     repo: 'BlogComment',
     owner: 'wendyltan',
     admin: ['wendyltan'],
-    distractionFreeMode: true,
+    distractionFreeMode: site.gitalk.distractionFreeMode,
     id: 'about',
     });
     gitalk.render('gitalk-container');
 </script>
 
 <!-- Gitalk end -->
-
- <!-- disqus 评论框 start  -->
 
 
 
@@ -363,9 +361,7 @@
                     <hr><h5><a href="/about/">ABOUT ME</a></h5>
                     <div class="short-about">
                         
-                            <a href="/about">
-                                <img src="/img/asuka.jpg"/>
-                            </a>
+                            <img src="/img/asuka.jpg" />
                         
                         
                             <p>足够细腻去触碰生活，内心才能更加坚强</p>
@@ -382,7 +378,7 @@
                                 </a>
                             </li>
                             
-                           
+                            
                             
                             
                             <li>
@@ -394,7 +390,7 @@
                                 </a>
                             </li>
                             
-                         
+                            
                             
                             <li>
                                 <a target="_blank" href="https://github.com/wendyltan">
@@ -405,11 +401,7 @@
                                 </a>
                             </li>
                             
-                            
                         </ul>
-                        
-                            <p>✉️ youlinai233@gmail.com</p>
-                        
                     </div>
                 </section>
                 <!-- Friends Blog -->
