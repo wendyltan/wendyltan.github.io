@@ -57,7 +57,7 @@
 <p class="p1"><span class="s1">{% if site.featured-tags %}</span></p>
 <p class="p5"><span class="s1"></span><br></p>
 <h5 style="margin: 0.0px 0.0px 16.6px 0.0px; line-height: 13.0px; font: 10.0px Times; color: #0000e9; -webkit-text-stroke: #0000e9"><span class="s6"><a href="file:///tags/"><b>FEATURED TAGS</b></a></span></h5>
-<p class="p1"><span class="s1">{% for tag in site.tags %} {% if tag[1].size > {{site.featured-condition-size}} %} <a href="file:///tags/#%7B%7B%20tag%5B0%5D%20%7D%7D"><span class="s2">{{ tag[0] }} </span></a>{% endif %} {% endfor %}<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">{% for tag in site.tags %} {% if tag[1].size > site.featured-condition-size %} <a href="file:///tags/#%7B%7B%20tag%5B0%5D%20%7D%7D"><span class="s2">{{ tag[0] }} </span></a>{% endif %} {% endfor %}<span class="Apple-converted-space"> </span></span></p>
 <p class="p1"><span class="s1">{% endif %} {% if site.friends %}</span></p>
 <p class="p5"><span class="s1"></span><br></p>
 <h5 style="margin: 0.0px 0.0px 16.6px 0.0px; line-height: 13.0px; font: 10.0px Times; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>FRIENDS</b></span></h5>
